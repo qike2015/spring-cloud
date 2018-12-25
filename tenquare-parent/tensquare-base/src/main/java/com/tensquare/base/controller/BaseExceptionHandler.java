@@ -1,7 +1,7 @@
 package com.tensquare.base.controller;
 
-import com.qike.tensquare.entity.Result;
-import com.qike.tensquare.entity.StatusCode;
+import entity.Result;
+import entity.StatusCode;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

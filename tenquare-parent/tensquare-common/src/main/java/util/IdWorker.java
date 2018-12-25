@@ -1,4 +1,4 @@
-package com.qike.tensquare.util;
+package util;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

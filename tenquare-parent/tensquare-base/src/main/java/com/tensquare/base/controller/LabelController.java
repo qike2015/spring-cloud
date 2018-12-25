@@ -1,7 +1,7 @@
 package com.tensquare.base.controller;
 
-import com.qike.tensquare.entity.Result;
-import com.qike.tensquare.entity.StatusCode;
+import entity.Result;
+import entity.StatusCode;
 import com.tensquare.base.pojo.Label;
 import com.tensquare.base.service.LabelService;
 import org.springframework.beans.factory.annotation.Autowired;

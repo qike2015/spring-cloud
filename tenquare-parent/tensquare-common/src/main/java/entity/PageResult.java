@@ -1,4 +1,4 @@
-package com.qike.tensquare.entity;
+package entity;
 
 import java.util.List;
 

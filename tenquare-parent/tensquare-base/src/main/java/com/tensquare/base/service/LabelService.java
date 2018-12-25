@@ -1,6 +1,6 @@
 package com.tensquare.base.service;
 
-import com.qike.tensquare.util.IdWorker;
+import util.IdWorker;
 import com.tensquare.base.dao.LabelDao;
 import com.tensquare.base.pojo.Label;
 import org.springframework.beans.factory.annotation.Autowired;
