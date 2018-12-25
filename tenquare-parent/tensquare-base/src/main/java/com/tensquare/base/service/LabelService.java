@@ -80,7 +80,7 @@ public class LabelService
                 Object labelname = searchMap.get("labelname");
                 if (labelname != null && !"".equals(labelname))
                 {
-                    predicateList.add(criteriaBuilder.like(root.get("criteriaBuilder").as(String.class), "%" + labelname + "%"));
+                    predicateList.add(criteriaBuilder.like(root.get("labelname").as(String.class), "%" + labelname + "%"));
                 }
 
                 if (searchMap.get("state") != null &&
