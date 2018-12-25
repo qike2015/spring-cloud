@@ -4,9 +4,16 @@ import com.qike.tensquare.util.IdWorker;
 import com.tensquare.base.dao.LabelDao;
 import com.tensquare.base.pojo.Label;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LabelService
@@ -51,5 +58,48 @@ public class LabelService
     public void deleteById(String id)
     {
         labelDao.deleteById(id);
+    }
+
+    public List<Label> findSearch(Map searchMap){
+
+        Specification<Label> sprcification = createSprcification(searchMap);
+
+        return labelDao.findAll(sprcification);
+    }
+
+
+    //构建查询条件
+    private Specification<Label> createSprcification(Map searchMap)
+    {
+        return new Specification<Label>()
+        {
+            @Override
+            public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder)
+            {
+                List<Predicate> predicateList = new ArrayList<>();
+                Object labelname = searchMap.get("labelname");
+                if (labelname != null && !"".equals(labelname))
+                {
+                    predicateList.add(criteriaBuilder.like(root.get("criteriaBuilder").as(String.class), "%" + labelname + "%"));
+                }
+
+                if (searchMap.get("state") != null &&
+                        !"".equals(searchMap.get("state")))
+                {
+                    predicateList.add(criteriaBuilder.equal(
+                            root.get("state").as(String.class), (String) searchMap.get("state")));
+                }
+
+                if (searchMap.get("recommend") != null &&
+                        !"".equals(searchMap.get("recommend")))
+                {
+                    predicateList.add(criteriaBuilder.equal(
+                            root.get("recommend").as(String.class),
+                            (String) searchMap.get("recommend")));
+                }
+
+                return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
+            }
+        };
     }
 }
