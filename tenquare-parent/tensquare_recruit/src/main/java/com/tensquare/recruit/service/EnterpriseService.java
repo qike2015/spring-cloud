@@ -32,6 +32,10 @@ public class EnterpriseService {
 	@Autowired
 	private IdWorker idWorker;
 
+	public List<Enterprise> hotList(){
+		return enterpriseDao.findByIshot("1");
+	}
+
 	/**
 	 * 查询全部列表
 	 * @return
@@ -154,5 +158,4 @@ public class EnterpriseService {
 		};
 
 	}
-
 }
