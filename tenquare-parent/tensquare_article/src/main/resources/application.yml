@@ -11,3 +11,7 @@ spring:
   jpa: 
     database: MySQL
     show-sql: true
+  redis:
+    host: www.qikeCloud.com
+    port: 6399
+    password: buke~123456

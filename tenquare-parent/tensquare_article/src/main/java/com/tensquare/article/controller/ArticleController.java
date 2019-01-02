@@ -1,22 +1,14 @@
 package com.tensquare.article.controller;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.tensquare.article.pojo.Article;
 import com.tensquare.article.service.ArticleService;
-
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 /**
  * 控制器层
  * @author Administrator
@@ -29,8 +21,20 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
-	
-	
+
+
+	@RequestMapping(value = "/examine/{articleId}", method = RequestMethod.PUT)
+	public Result examine(@PathVariable String articleId){
+		articleService.examine(articleId);
+		return new Result(true, StatusCode.OK, "审核成功");
+	}
+
+	@RequestMapping(value = "/thumbup/{articleId}", method = RequestMethod.PUT)
+	public Result thumbup(@PathVariable String articleId){
+		articleService.addThumbup(articleId);
+		return new Result(true, StatusCode.OK, "点赞成功");
+	}
+
 	/**
 	 * 查询全部数据
 	 * @return
