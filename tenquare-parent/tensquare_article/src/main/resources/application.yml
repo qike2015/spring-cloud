@@ -15,3 +15,9 @@ spring:
     host: www.qikeCloud.com
     port: 6399
     password: buke~123456
+  data:
+    mongodb:
+      host: www.qikeCloud.com
+      username: root
+      password: buke~123
+      database: spitdb
