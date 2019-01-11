@@ -1,0 +1,15 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: tensquare-spit
+  data:
+    mongodb:
+      host: www.qikeCloud.com
+      username: root
+      password: buke~123
+      database: spitdb
+  redis:
+    host: www.qikeCloud.com
+    port: 6399
+    password: buke~123456
