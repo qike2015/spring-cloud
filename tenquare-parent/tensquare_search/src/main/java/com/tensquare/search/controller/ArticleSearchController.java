@@ -5,6 +5,7 @@ import com.tensquare.search.service.ArticleSearchService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,11 @@ public class ArticleSearchController {
     }
 
     @RequestMapping(value = "/search/{keywords}/{page}/{size}", method = RequestMethod.GET)
-    public Result findByTitleLike(@PathVariable String keywords,  @PathVariable int page, @PathVariable int size) {
+    public Result findByTitleLike(@PathVariable String keywords,  @PathVariable int page, @PathVariable int size,String key1) {
+
+        if (StringUtils.isNotEmpty(key1)){
+            keywords = key1;
+        }
 
         Page<Article> articlePage = articleSearchService.findByTitleLike(keywords, page, size);
 
