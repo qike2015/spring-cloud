@@ -1,0 +1,21 @@
+server: 
+  port: 9008
+spring: 
+  application:  
+    name: tensquare-user #指定服务名
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://www.qikecloud.com:3306/tensquare_user?characterEncoding=UTF8
+    username: root
+    password: buke123
+  jpa: 
+    database: MySQL
+    show-sql: true
+  redis:
+    host: www.qikeCloud.com
+    port: 6399
+    password: buke~123456
+  rabbitmq:
+    host: www.qikecloud.com
+    username: buke
+    password: buke~123
