@@ -7,7 +7,10 @@ import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import util.JwtUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 /**
  * 控制器层
@@ -22,6 +25,9 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
+	@Autowired
+	private JwtUtil jwtUtil;
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Result login(@RequestBody Admin admin){
 		Admin adminLogin = adminService.login(admin.getLoginname(),admin.getPassword());
@@ -32,11 +38,11 @@ public class AdminController {
 
 		//使得前后端可以通话的操作。采用JWT来实现。
 		//生成令牌
-		//String token = jwtUtil.createJWT(adminLogin.getId(), adminLogin.getLoginname(), "admin");
-		//Map<String, Object> map = new HashMap<>();
-		//map.put("token", token);
-		//map.put("role", "admin");
-		return new Result(true, StatusCode.OK, "登录成功");
+		String token = jwtUtil.createJWT(adminLogin.getId(), adminLogin.getLoginname(), "admin");
+		Map<String, Object> map = new HashMap<>();
+		map.put("token", token);
+		map.put("role", "admin");
+		return new Result(true, StatusCode.OK, "登录成功",map);
 	}
 	
 	/**

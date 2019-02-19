@@ -19,3 +19,8 @@ spring:
     host: www.qikecloud.com
     username: buke
     password: buke~123
+
+jwt:
+  config:
+    key: buke
+    ttl: 3600000

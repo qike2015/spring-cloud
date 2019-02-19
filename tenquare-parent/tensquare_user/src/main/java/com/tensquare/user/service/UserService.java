@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -43,6 +44,10 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
+
+	@Autowired
+	private HttpServletRequest request;
 
 	public void sendSms(String mobile){
 
@@ -134,6 +139,12 @@ public class UserService {
 	 * @param id
 	 */
 	public void deleteById(String id) {
+
+		String token = (String) request.getAttribute("claims_admin");
+		if (token==null || "".equals(token)){
+			throw new RuntimeException("权限不足！");
+		}
+
 		userDao.deleteById(id);
 	}
 
