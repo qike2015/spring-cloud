@@ -7,3 +7,10 @@ spring:
   data:
     elasticsearch:
       cluster-nodes: www.qikecloud.com:9300
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}

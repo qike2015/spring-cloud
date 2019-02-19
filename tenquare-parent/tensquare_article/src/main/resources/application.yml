@@ -21,3 +21,10 @@ spring:
       username: root
       password: buke~123
       database: spitdb
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
