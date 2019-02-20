@@ -1,0 +1,33 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: tensquare-friend #指定服务名
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://www.qikecloud.com:3306/tensquare_user?characterEncoding=UTF8
+    username: root
+    password: buke123
+  jpa:
+    database: MySQL
+    show-sql: true
+  redis:
+    host: www.qikeCloud.com
+    port: 6399
+    password: buke~123456
+  rabbitmq:
+    host: www.qikecloud.com
+    username: buke
+    password: buke~123
+
+jwt:
+  config:
+    key: buke
+    ttl: 3600000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
