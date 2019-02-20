@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient("tensquare-base")
+@FeignClient(value = "tensquare-base",fallback = BaseClientImpl.class)
 public interface BaseClient
 {
 
