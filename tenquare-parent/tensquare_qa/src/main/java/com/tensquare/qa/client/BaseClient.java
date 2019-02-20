@@ -10,5 +10,5 @@ public interface BaseClient
 {
 
     @RequestMapping(value = "/label/{labelId}", method = RequestMethod.GET)
-    public Result findById();
+    public Result findById(String lableId);
 }

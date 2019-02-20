@@ -1,8 +1,8 @@
 package com.tensquare.base.controller;
 
+import com.tensquare.base.pojo.Label;
 import entity.Result;
 import entity.StatusCode;
-import com.tensquare.base.pojo.Label;
 import com.tensquare.base.service.LabelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
