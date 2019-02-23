@@ -5,3 +5,5 @@ spring:
       profile: dev
       label: master
       uri: http://www.qikecloud.com:12000
+    refresh:
+      refreshable: none
