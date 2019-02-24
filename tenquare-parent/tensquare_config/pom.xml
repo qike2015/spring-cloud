@@ -36,7 +36,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- docker的maven插件，官网 https://github.com/spotify/docker-maven-plugin -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
@@ -44,7 +43,7 @@
                 <configuration>
                     <imageName>47.106.39.95:5000/${project.artifactId}:${project.version}</imageName>
                     <baseImage>jdk1.8</baseImage>
-                    <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+                    <entryPoint>["java", "-jar","-Xms128M","-Xmx128M","/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

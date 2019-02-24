@@ -70,7 +70,7 @@
                 <configuration>
                     <imageName>47.106.39.95:5000/${project.artifactId}:${project.version}</imageName>
                     <baseImage>jdk1.8</baseImage>
-                    <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+                    <entryPoint>["java", "-jar","-Xms128M","-Xmx128M","/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
